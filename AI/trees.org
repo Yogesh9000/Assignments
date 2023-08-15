@@ -9,29 +9,10 @@
 + A node's out degree is the number of children for that node. A forest is a collection of one or more trees.
 + Each node in a tree has precisely one parent, except for the root, which has no parent. From this observation, it immediately follows that a tree with n nodes must have n-1 edges because each node, aside from the root, has one edge connecting that node to its parent.
 
-* General Tree ADT
-#+begin_src java
-// General tree node ADT
-public interface GTNode {
-  public Object value();
-  public boolean isLeaf();
-  public GTNode parent();
-  public GTNode leftmostChild();
-  public GTNode rightSibling();
-  public void setValue(Object value);
-  public void setParent(GTNode par);
-  public void insertFirst(GTNode n);
-  public void insertNext(GTNode n);
-  public void removeFirst();
-  public void removeNext();
-}
-
-// General tree ADT
-public interface GenTree {
-  public void clear();      // Clear the tree
-  public GTNode root();     // Return the root
-  // Make the tree have a new root, give first child and sib
-  public void newroot(Object value, GTNode first, GTNode sib);
-  public void newleftchild(E value); // Add left child
-}
-#+end_src
+* Tree Traversal
+** Breadth First Search(BFS)
+ Breadth First Search technique is defined as a method to traverse a Tree such that all nodes present in the same level are traversed completely before traversing the next level.
+*** How does Level Order Traversal work?
++ The main idea of level order traversal is to traverse all the nodes of a lower level before moving to any of the nodes of a higher level. This can be done in any of the following ways:
+  - the naive one :: Find height of tree. Then for each level, run a recursive function by maintaining current height. Whenever the level of a node matches, print that node.
+  - efficiently using a queue :: We need to visit the nodes in a lower level before any node in a higher level, this idea is quite similar to that of a queue. Push the nodes of a lower level in the queue. When any node is visited, pop that node from the queue and push the child of that node in the queue. This ensures that the node of a lower level are visited prior to any node of a higher level.
